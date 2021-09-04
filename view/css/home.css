@@ -1,0 +1,28 @@
+.banner {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)),
+        url("../images/banner.png");
+    height: 400px;
+    color: #344966;
+    position: relative;
+    background-size: cover;
+}
+
+.banner-octo {
+    background-color: #e3d83b;
+    filter: opacity(.7);
+    height: 400px;
+    width: 600px;
+}
+
+.banner-text {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}
+
+.banner-text h2 {
+    font-size: 2.5rem;
+}
+
