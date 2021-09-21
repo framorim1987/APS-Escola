@@ -32,8 +32,10 @@
 
     <section class="container-area-do-administrador">
         <div class="menu-lateral">
-            <div><a href="#" class="btn-notas active">Lançar notas</a></div>
-            <div><a href="#" class="btn-faltas">Controle de frequência</a></div>
+            <div><a href="#" class="btn-action btn-cadastrar active">Cadastrar</a></div>
+            <div><a href="#" class="btn-action btn-consultar">Consultar</a></div>
+            <div><a href="#" class="btn-action btn-editar">Editar</a></div>
+            <div><a href="#" class="btn-action btn-deletar">Deletar</a></div>
         </div>
         <div class="form-administrador">
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
@@ -155,30 +157,48 @@
     </footer>
 
     <script>
-        const formularioNotas = document.querySelector('.form-administrador-nota');
-        const formularioFaltas = document.querySelector('.form-administrador-falta');
-        const btnNotas = document.querySelector('.btn-notas');
-        const btnFaltas = document.querySelector('.btn-faltas');
+        // const formularioNotas = document.querySelector('.form-administrador-nota');
+        // const formularioFaltas = document.querySelector('.form-administrador-falta');
+        // const btnCadastrar = document.querySelector('.btn-cadastrar');
+        // const btnConsultar = document.querySelector('.btn-consultar');
+        // const btnEditar = document.querySelector('.btn-editar');
+        // const btnDeletar = document.querySelector('.btn-deletar');
         
-        const changeClass = (btnAddClass, btnRemoveClass) => {
-            btnRemoveClass.classList.remove('active');
-            btnAddClass.classList.add('active');
-        }
+        // const changeClass = (btnAddClass, btnRemoveClass1, btnRemoveClass2, btnRemoveClass3) => {
+        //     btnRemoveClass1.classList.remove('active');
+        //     btnRemoveClass2.classList.remove('active');
+        //     btnRemoveClass3.classList.remove('active');
+        //     btnAddClass.classList.add('active');
+        // }
 
-        const changeForm = (formHide, formShow) => {
-            formShow.classList.remove('none');
-            formHide.classList.add('none');
-        }
+        // const changeForm = (formHide, formShow) => {
+        //     formShow.classList.remove('none');
+        //     formHide.classList.add('none');
+        // }
 
-        btnFaltas.addEventListener('click', () => {
-            changeClass(btnFaltas, btnNotas);
-            changeForm(formularioNotas, formularioFaltas);
-        })
+        // btnCadastrar.addEventListener('click', () => {
+        //     changeClass(btnFaltas, btnNotas);
+        //     changeForm(formularioNotas, formularioFaltas);
+        // })
 
-        btnNotas.addEventListener('click', () => {
-            changeClass(btnNotas, btnFaltas);
-            changeForm(formularioFaltas, formularioNotas);
-        })
+        // btnConsultar.addEventListener('click', () => {
+        //     changeClass(btnNotas, btnFaltas);
+        //     changeForm(formularioFaltas, formularioNotas);
+        // })
+
+        const btn = document.querySelectorAll('.btn-action');
+
+        btn.forEach(button => {
+            button.addEventListener('click', (event) => {
+                btn.forEach(bt => {
+                    bt.classList.remove('active');
+                });
+
+                event.target.classList.add('active');
+            })
+        });
+
+
     </script>
 </body>
 
