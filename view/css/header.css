@@ -9,7 +9,16 @@ header {
 .logo h1 a{
     color: #f1f1f1;
     text-decoration: none;
-    font-size: 1.5rem;
+}
+
+.escola {
+    font-family: 'Koh Santepheap', cursive;
+    font-size: 2rem;
+}
+
+.inova {
+    font-family: 'Ephesis', cursive;
+    font-size: 2rem;
 }
 
 .menu {

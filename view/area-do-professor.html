@@ -10,6 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -20,7 +22,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1><a href="index.html">Logo</a></h1>
+            <h1><a href="index.html"><span class="escola">Escola</span><span class="inova">Inova</span></a></h1>
         </div>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
@@ -81,7 +83,7 @@
                 </div>
             </form>
 
-            <form action="#" class="form-professor-falta none">
+            <form action="#" class="form-professor-falta">
                 <div class="row">
                     <input type="date">
                     <div class="turma-faltas">
@@ -159,7 +161,7 @@
         const formularioFaltas = document.querySelector('.form-professor-falta');
         const btnNotas = document.querySelector('.btn-notas');
         const btnFaltas = document.querySelector('.btn-faltas');
-        
+
         const changeClass = (btnAddClass, btnRemoveClass) => {
             btnRemoveClass.classList.remove('active');
             btnAddClass.classList.add('active');
