@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/area-do-aluno.css">
-    <title>Fale Conosco</title>
+    <title>Área do aluno</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Minha área</a></li>
+            <li><a href="minha-area.html" class="area">Sair</a></li>
         </ul>
     </header>
 
@@ -39,48 +39,76 @@
         </div>
         <div class="form-aluno">
             <h2 class="area-do-aluno-titulo">Área do aluno</h2>
+
+            <!-- Início do formulário de notas -->
             <form action="#" class="form-aluno-nota">
                 <div class="row">
                     <table class="table-notas">
                         <thead>
-                            <th>Disciplina</th>
-                            <th>Nota 1</th>
-                            <th>Nota 2</th>
-                            <th>Nota final</th>
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Nota 1</th>
+                                <th>Nota 2</th>
+                                <th>Nota final</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <td>Matemática</td>
-                            <td>6</td>
-                            <td>8</td>
-                            <td>7</td>
+                            <tr>
+                                <td>Português</td>
+                                <td>6</td>
+                                <td>8</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Inglês</td>
+                                <td>6</td>
+                                <td>8</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>Matemática</td>
+                                <td>6</td>
+                                <td>8</td>
+                                <td>7</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </form>
+            <!-- Fim do formulário de notas -->
 
+            <!-- Início do formulário de faltas -->
             <form action="#" class="form-aluno-falta none">
                 <div class="row">
                     <div class="aluno-faltas">
-                        <label for="aluno_faltas">Selecione a disciplina:</label><br>
-                        <select name="aluno_notas" id="aluno_notas">
+                        <label for="disciplinas">Selecione a disciplina:</label><br>
+                        <select name="disciplinas" id="disciplinas">
                             <option value=""></option>
-                            <option value="portugues">Português</option>
-                            <option value="matematica">Matemática</option>
-                            <option value="ingles">Inglês</option>
+                            <option value="1">Língua Portuguesa</option>
+                            <option value="2">Redação</option>
+                            <option value="3">Matemática</option>
+                            <option value="4">História</option>
+                            <option value="5">Geografia</option>
+                            <option value="6">Ciências</option>
+                            <option value="7">Artes</option>
+                            <option value="8">Educação Física</option>
+                            <option value="9">Ingês</option>
+                            <option value="10">Física</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col1">
-                        <input type="submit" value="Buscar" class="btn-form-area-do-aluno-falta">
+                        <label for="total_faltas">Total de faltas:</label><br>
+                        <input type="text" readonly>
                     </div>
                     <div class="col2">
-                        <label for="total_faltas">Total de faltas:</label><br>
-                        <input type="text">
+                        <input type="submit" value="Buscar" class="btn-form-area-do-aluno-falta">
                     </div>
                 </div>
             </form>
+            <!-- Fim do formulário de faltas -->
         </div>
     </section>
 

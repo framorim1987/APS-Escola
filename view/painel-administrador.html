@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/painel-administrador.css">
-    <title>Fale Conosco</title>
+    <title>Painel do administrador</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Minha área</a></li>
+            <li><a href="minha-area.html" class="area">Sair</a></li>
         </ul>
     </header>
 
@@ -41,7 +41,9 @@
         </div>
         <div class="form-administrador">
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
-            <form action="#" class="form-administrador-cadastrar">
+
+            <!-- Início do formulário de cadastro -->
+            <form action="#" class="form-administrador-cadastrar form-administrador-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
@@ -77,53 +79,109 @@
                     <div class="col2">
                     </div>
                 </div>
-                
+
                 <div class="row-btn">
                     <input type="submit" value="Gravar" class="btn-form-area-do-administrador-nota">
                 </div>
             </form>
+            <!-- Fim do formulário de cadastro -->
 
-            <form action="#" class="form-administrador-falta none">
+            <!-- Início do formulário de consulta -->
+            <form action="#" class="form-administrador-consultar form-administrador-visible none">
                 <div class="row">
-                    <input type="date">
-                    <div class="turma-faltas">
-                        <label for="turma_faltas">Selecione a turma:</label><br>
-                        <select name="turma_notas" id="turma_notas">
+                    <div class="col1">
+                        <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
+                        <select name="cadastrar_tipo" id="cadastrar_tipo" onchange="changeSelect()">
                             <option value=""></option>
-                            <option value="1°_A">1° A</option>
-                            <option value="2°_A">2° A</option>
-                            <option value="3°_A">3° A</option>
+                            <option value="aluno">Aluno</option>
+                            <option value="professor">Professor</option>
+                            <option value="responsavel">Responsável</option>
                         </select>
+                    </div>
+                    <div class="col2">
+                        <label for="id_usuario">ID do usuário:</label><br>
+                        <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
 
+
                 <div class="row">
-                    <table class="table-faltas">
-                        <thead>
-                            <tr>
-                                <th>Número</th>
-                                <th>Nome</th>
-                                <th>Série</th>
-                                <th>Turma</th>
-                                <th>Presença</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Felipe</td>
-                                <td>1º</td>
-                                <td>A</td>
-                                <td><input type="checkbox"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col1">
+                        <label for="nome">Nome:</label><br>
+                        <input type="text" name="nome" id="nome">
+                    </div>
+
+                    <div class="col2">
+                        <label for="sobrenome">Sobrenome:</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome">
+                    </div>
                 </div>
 
                 <div class="row-btn">
                     <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
+            <!-- Fim do formulário de consulta -->
+
+            <!-- Início do formulário de edição -->
+            <form action="#" class="form-administrador-editar form-administrador-visible none">
+                <div class="row">
+                    <div class="col1">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                    <div class="col2">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col1">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                    <div class="col2">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                </div>
+
+                <div class="row-btn">
+                    <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
+                </div>
+            </form>
+            <!-- Fim do formulário de edição -->
+
+            <!-- Início do formulário deletar -->
+            <form action="#" class="form-administrador-deletar form-administrador-visible none">
+                <div class="row">
+                    <div class="col1">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                    <div class="col2">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col1">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                    <div class="col2">
+                        <label for="Implementar">Implementar:</label><br>
+                        <input type="text" name="Implementar" id="Implementar">
+                    </div>
+                </div>
+
+                <div class="row-btn">
+                    <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
+                </div>
+            </form>
+            <!-- Fim do formulário deletar -->
         </div>
     </section>
 
@@ -159,6 +217,32 @@
     <script>
         const btn = document.querySelectorAll('.btn-action');
         const select = document.querySelector('#cadastrar_tipo');
+        const forms = document.querySelectorAll('.form-administrador-visible');
+
+        const removeClass = (classe) => {
+            forms.forEach(form => {
+                form.classList.add('none');
+            });
+
+            document.querySelector(classe).classList.remove('none');
+        }
+
+        const exibeForm = (btnText) => {
+            switch (btnText) {
+                case 'Cadastrar':
+                    removeClass('.form-administrador-cadastrar');
+                    break;
+                case 'Consultar':
+                    removeClass('.form-administrador-consultar');
+                    break;
+                case 'Editar':
+                    removeClass('.form-administrador-editar');
+                    break;
+                case 'Deletar':
+                    removeClass('.form-administrador-deletar');
+                    break;
+            }
+        }
 
         const changeSelect = () => {
             if (select.value == "aluno") {
@@ -175,8 +259,12 @@
                 });
 
                 event.target.classList.add('active');
+
+                exibeForm(event.target.text);
             })
         });
+
+
     </script>
 </body>
 
