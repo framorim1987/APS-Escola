@@ -90,8 +90,8 @@
             <form action="#" class="form-administrador-consultar form-administrador-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
-                        <select name="cadastrar_tipo" id="cadastrar_tipo" onchange="changeSelect()">
+                        <label for="consultar_tipo">Selecione o tipo de usuário:</label><br>
+                        <select name="consultar_tipo" id="consultar_tipo" onchange="changeSelectConsulta()">
                             <option value=""></option>
                             <option value="aluno">Aluno</option>
                             <option value="professor">Professor</option>
@@ -117,68 +117,126 @@
                     </div>
                 </div>
 
+                <div class="row row-responsavel-consulta none">
+                    <div class="col1">
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_responsavel" id="id_responsavel">
+                    </div>
+
+                    <div class="col2">
+                    </div>
+                </div>
+
                 <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
+                    <input type="submit" value="Consultar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
             <!-- Fim do formulário de consulta -->
 
             <!-- Início do formulário de edição -->
-            <form action="#" class="form-administrador-editar form-administrador-visible none">
-                <div class="row">
-                    <div class="col1">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
-                    </div>
-                    <div class="col2">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
-                    </div>
-                </div>
 
+            <form action="" class="form-consultar-editar form-auxiliar-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
+                        <label for="editar_tipo">Selecione o tipo de usuário:</label><br>
+                        <select name="editar_tipo" id="editar_tipo" onchange="changeSelectEdita()">
+                            <option value=""></option>
+                            <option value="aluno">Aluno</option>
+                            <option value="professor">Professor</option>
+                            <option value="responsavel">Responsável</option>
+                        </select>
                     </div>
+
                     <div class="col2">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
+                        <label for="id_usuario">ID do usuário:</label><br>
+                        <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
 
                 <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
+                    <input type="submit" value="Consultar" class="btn-form-area-do-administrador-falta">
+                </div>
+
+            </form>
+            
+            <form action="#" class="form-administrador-editar form-administrador-visible none">
+                <div class="row">
+                    <div class="col1">
+                        <label for="nome">Nome:</label><br>
+                        <input type="text" name="nome" id="nome">
+                    </div>
+
+                    <div class="col2">
+                        <label for="sobrenome">Sobrenome:</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome">
+                    </div>
+                </div>
+
+                <div class="row row-responsavel-edita none">
+                    <div class="col1">
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_responsavel" id="id_responsavel">
+                    </div>
+
+                    <div class="col2">
+                    </div>
+                </div>
+
+                <div class="row-btn">
+                    <input type="submit" value="Deletar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
             <!-- Fim do formulário de edição -->
 
             <!-- Início do formulário deletar -->
-            <form action="#" class="form-administrador-deletar form-administrador-visible none">
-                <div class="row">
-                    <div class="col1">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
-                    </div>
-                    <div class="col2">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
-                    </div>
-                </div>
 
+            <form action="" class="form-consultar-deletar form-auxiliar-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
+                        <label for="deletar_tipo">Selecione o tipo de usuário:</label><br>
+                        <select name="deletar_tipo" id="deletar_tipo" onchange="changeSelectDeleta()">
+                            <option value=""></option>
+                            <option value="aluno">Aluno</option>
+                            <option value="professor">Professor</option>
+                            <option value="responsavel">Responsável</option>
+                        </select>
                     </div>
                     <div class="col2">
-                        <label for="Implementar">Implementar:</label><br>
-                        <input type="text" name="Implementar" id="Implementar">
+                        <label for="id_usuario">ID do usuário:</label><br>
+                        <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
 
                 <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-administrador-falta">
+                    <input type="submit" value="Consultar" class="btn-form-area-do-administrador-falta">
+                </div>
+            </form>
+
+            <form action="#" class="form-administrador-deletar form-administrador-visible none">
+                <div class="row">
+                    <div class="col1">
+                        <label for="nome">Nome:</label><br>
+                        <input type="text" name="nome" id="nome">
+                    </div>
+
+                    <div class="col2">
+                        <label for="sobrenome">Sobrenome:</label><br>
+                        <input type="text" name="sobrenome" id="sobrenome">
+                    </div>
+                </div>
+
+                <div class="row row-responsavel-deleta none">
+                    <div class="col1">
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_responsavel" id="id_responsavel">
+                    </div>
+
+                    <div class="col2">
+                    </div>
+                </div>
+
+                <div class="row-btn">
+                    <input type="submit" value="Deletar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
             <!-- Fim do formulário deletar -->
@@ -217,10 +275,22 @@
     <script>
         const btn = document.querySelectorAll('.btn-action');
         const select = document.querySelector('#cadastrar_tipo');
+        const selectConsulta = document.querySelector('#consultar_tipo');
+        const selectEdita = document.querySelector('#editar_tipo');
+        const selectDeleta = document.querySelector('#deletar_tipo');
         const forms = document.querySelectorAll('.form-administrador-visible');
+        const formsAuxiliar = document.querySelectorAll('.form-auxiliar-visible');
 
         const removeClass = (classe) => {
             forms.forEach(form => {
+                form.classList.add('none');
+            });
+
+            document.querySelector(classe).classList.remove('none');
+        }
+
+        const removeClassAuxiliar = (classe) => {
+            formsAuxiliar.forEach(form => {
                 form.classList.add('none');
             });
 
@@ -231,15 +301,19 @@
             switch (btnText) {
                 case 'Cadastrar':
                     removeClass('.form-administrador-cadastrar');
+                    removeClassAuxiliar('.null');
                     break;
                 case 'Consultar':
                     removeClass('.form-administrador-consultar');
+                    removeClassAuxiliar('.null');
                     break;
                 case 'Editar':
                     removeClass('.form-administrador-editar');
+                    removeClassAuxiliar('.form-consultar-editar');
                     break;
                 case 'Deletar':
                     removeClass('.form-administrador-deletar');
+                    removeClassAuxiliar('.form-consultar-deletar');
                     break;
             }
         }
@@ -249,6 +323,30 @@
                 document.querySelector('.row-responsavel').classList.remove('none');
             } else {
                 document.querySelector('.row-responsavel').classList.add('none');
+            }
+        }
+
+        const changeSelectConsulta = () => {
+            if (selectConsulta.value == "aluno") {
+                document.querySelector('.row-responsavel-consulta').classList.remove('none');
+            } else {
+                document.querySelector('.row-responsavel-consulta').classList.add('none');
+            }
+        }
+
+        const changeSelectEdita = () => {
+            if (selectEdita.value == "aluno") {
+                document.querySelector('.row-responsavel-edita').classList.remove('none');
+            } else {
+                document.querySelector('.row-responsavel-edita').classList.add('none');
+            }
+        }
+
+        const changeSelectDeleta = () => {
+            if (selectDeleta.value == "aluno") {
+                document.querySelector('.row-responsavel-deleta').classList.remove('none');
+            } else {
+                document.querySelector('.row-responsavel-deleta').classList.add('none');
             }
         }
 
