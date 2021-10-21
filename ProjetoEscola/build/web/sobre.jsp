@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/fale-conosco.css">
-    <title>Fale Conosco</title>
+    <link rel="stylesheet" href="css/sobre.css">
+    <title>Sobre</title>
 </head>
 
 <body>
@@ -26,73 +26,69 @@
         </div>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Minha Ã¡rea</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
+            <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
+            <li><a href="minha-area.jsp" class="area">Minha área</a></li>
         </ul>
     </header>
 
-    <section class="fale-conosco">
-        <form class="left" action="#">
-            <div>
-                <label for="id-subject">Assunto:</label><br>
-                <select name="subject" class="max-size" id="id-subject">
-                    <option value=""></option>
-                    <option value="financeiro">Financeiro</option>
-                    <option value="matricula-rematricula">Matricula e Rematricula</option>
-                    <option value="notas">Notas</option>
-                    <option value="faltas">Faltas</option>
-                    <option value="faltas">Outros</option>
-                </select>
-            </div>
+    <section>
+        <h2>Sobre nós</h2>
+        <p>Para todos que desejam ampliar as possibilidades que o futuro nos oferece, a Escola Principal inovação é um
+            lugar que facilita a transformação dos seus sonhos em realidade, utilizamos uma metodologia inovadora, tendo
+            a gameficação como estratégia de ensino. Diferentemente de outros colégios onde se utiliza o método
+            tradicional de ensino, nosso colégio possibilita aos alunos aprender enquanto se divertem.</p>
 
-            <div>
-                <label for="name">Nome:</label><br>
-                <input type="text" class="max-size" id="name" required>
+        <div class="sobre-container">
+            <div class="img">
+                <img src="./images/img-sobre-1.png" alt="">
             </div>
-
-            <div class="medium-size">
-                <div>
-                    <label for="email">E-mail:</label><br>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div>
-                    <label for="fone">Telefone:</label><br>
-                    <input type="text" id="fone" required>
-                </div>
-            </div>
-
-            <div>
-                <label for="message">Mensagem:</label><br>
-                <textarea name="message" class="max-size" id="message" cols="30" rows="10"></textarea>
-            </div>
-            <span class="container">
-                <input type="submit" class="btn-submit" id="submit" value="Enviar">
-            </span>
-        </form>
-
-        <div class="right">
-            <div>
-                <h3>Escola Principal Inova</h3>
-                <p>A bela arte de ensinar</p>
-            </div>
-            <div class="bottom">
-                <p>Fale conosco</p>
-                <p>(11)3333-3333</p>
-                <p>contato@escolaprincipalinova.com.br</p>
+            <div class="text">
+                <h3>Missão</h3>
+                <p>Nossa missão facilitar com que nossos alunos alcancem seus sonhos, oferecendo educação de qualidade
+                    de forma inovadora, com conceitos como a gamificação, tornando o processo de aprendizagem mais
+                    agradável.</p>
             </div>
         </div>
+
+        <div class="sobre-container">
+            <div class="text">
+                <h3>Visão</h3>
+                <p>Queremos nos tonar referêcia na utilização da gameficação como método de ensino, superando a
+                    concorrência e em 10 anos ajudar mais de 10 mil alunos a alcançarem seus sonhos.</p>
+            </div>
+            <div class="img">
+                <img src="./images/img-sobre-2.png" alt="">
+            </div>
+        </div>
+
+        <div class="sobre-container">
+            <div class="img">
+                <img src="./images/img-sobre-3.png" alt="">
+            </div>
+            <div class="text">
+                <h3>Valores</h3>
+
+                <ul class="list">
+                    <li>Educação</li>
+                    <li>Inovação</li>
+                    <li>Qualidade</li>
+                    <li>Cuidado</li>
+                    <li>Empatia</li>
+                </ul>
+            </div>
+        </div>
+
     </section>
 
     <footer>
         <p class="heavy">Escola Principal Inova</p>
         <div class="footer-div">
-            <p>SÃ£o Paulo, Brasil</p>
+            <p>São Paulo, Brasil</p>
         </div>
         <div class="footer-div">
             <p class="light">Rua Dr. Ulisses Cirilo, 225</p>
-            <p class="light">SÃ£o Miguel Pta.</p>
+            <p class="light">São Miguel Pta.</p>
         </div>
         <p class="light">(11)3333-3333</p>
         <p class="light">contato@escolaprincipalinova.com.br</p>

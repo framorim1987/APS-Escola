@@ -17,18 +17,31 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/painel-administrador.css">
     <title>Painel do administrador</title>
+    <style>
+        .sucesso{
+         color: green;
+         font-weight: bold;
+      }
+      .erro{
+          color: red;
+          font-weight: bold;
+      }
+    </style>
 </head>
 
 <body>
+        <%  
+            if(session.getAttribute("NomeAdm")!=null){
+        %>
     <header>
         <div class="logo">
             <h1><a href="index.html"><span class="escola">Escola</span><span class="inova">Inova</span></a></h1>
         </div>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Sair</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
+            <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
+            <li><a href="sair.jsp" class="area">Sair</a></li>
         </ul>
     </header>
 
@@ -42,16 +55,16 @@
         <div class="form-administrador">
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
-            <!-- InÃ­cio do formulÃ¡rio de cadastro -->
-            <form action="#" class="form-administrador-cadastrar form-administrador-visible">
+            <!-- Início do formulário de cadastro -->
+            <form action="Cadastro.jsp" class="form-administrador-cadastrar form-administrador-visible">
                 <div class="row">
                     <div class="col1">
-                        <label for="cadastrar_tipo">Selecione o tipo de usuÃ¡rio:</label><br>
+                        <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
                         <select name="cadastrar_tipo" id="cadastrar_tipo" onchange="changeSelect()">
                             <option value=""></option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="responsavel">ResponsÃ¡vel</option>
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
                         </select>
                     </div>
                     <div class="col2">
@@ -72,7 +85,7 @@
 
                 <div class="row row-responsavel none">
                     <div class="col1">
-                        <label for="id_responsavel">ID do responsÃ¡vel:</label><br>
+                        <label for="id_responsavel">ID do responsável:</label><br>
                         <input type="text" name="id_responsavel" id="id_responsavel">
                     </div>
 
@@ -83,23 +96,39 @@
                 <div class="row-btn">
                     <input type="submit" value="Gravar" class="btn-form-area-do-administrador-nota">
                 </div>
+                
+                  <%
+                    String respSuc= request.getParameter("dadosSuc");
+                    String respErro= request.getParameter("dadosErro");
+                    String respErro2= request.getParameter("dadosErro2");
+                  if(respSuc!=null){%>                  
+                  <br> <p class="sucesso"><%=respSuc%></p>                    
+                  <%}%>
+                  
+                  <% if(respErro!=null){%>                  
+                  <br> <p class="erro"><%=respErro%></p>                    
+                  <%}%>
+                  
+                  <% if(respErro2!=null){%>                  
+                  <br><p class="erro">ERRO! Verifique o ID do responsável</p>                    
+                  <%}%>
             </form>
-            <!-- Fim do formulÃ¡rio de cadastro -->
+            <!-- Fim do formulário de cadastro -->
 
-            <!-- InÃ­cio do formulÃ¡rio de consulta -->
-            <form action="#" class="form-administrador-consultar form-administrador-visible none">
+            <!-- Início do formulário de consulta -->
+            <form action="Consultar.jsp" class="form-administrador-consultar form-administrador-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="consultar_tipo">Selecione o tipo de usuÃ¡rio:</label><br>
+                        <label for="consultar_tipo">Selecione o tipo de usuário:</label><br>
                         <select name="consultar_tipo" id="consultar_tipo" onchange="changeSelectConsulta()">
                             <option value=""></option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="responsavel">ResponsÃ¡vel</option>
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
                         </select>
                     </div>
                     <div class="col2">
-                        <label for="id_usuario">ID do usuÃ¡rio:</label><br>
+                        <label for="id_usuario">ID do usuário:</label><br>
                         <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
@@ -119,7 +148,7 @@
 
                 <div class="row row-responsavel-consulta none">
                     <div class="col1">
-                        <label for="id_responsavel">ID do responsÃ¡vel:</label><br>
+                        <label for="id_responsavel">ID do responsável:</label><br>
                         <input type="text" name="id_responsavel" id="id_responsavel">
                     </div>
 
@@ -131,24 +160,24 @@
                     <input type="submit" value="Consultar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
-            <!-- Fim do formulÃ¡rio de consulta -->
+            <!-- Fim do formulário de consulta -->
 
-            <!-- InÃ­cio do formulÃ¡rio de ediÃ§Ã£o -->
+            <!-- Início do formulário de edição -->
 
-            <form action="" class="form-consultar-editar form-auxiliar-visible none">
+            <form action="Editar.jsp" class="form-consultar-editar form-auxiliar-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="editar_tipo">Selecione o tipo de usuÃ¡rio:</label><br>
+                        <label for="editar_tipo">Selecione o tipo de usuário:</label><br>
                         <select name="editar_tipo" id="editar_tipo" onchange="changeSelectEdita()">
                             <option value=""></option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="responsavel">ResponsÃ¡vel</option>
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
                         </select>
                     </div>
 
                     <div class="col2">
-                        <label for="id_usuario">ID do usuÃ¡rio:</label><br>
+                        <label for="id_usuario">ID do usuário:</label><br>
                         <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
@@ -174,7 +203,7 @@
 
                 <div class="row row-responsavel-edita none">
                     <div class="col1">
-                        <label for="id_responsavel">ID do responsÃ¡vel:</label><br>
+                        <label for="id_responsavel">ID do responsável:</label><br>
                         <input type="text" name="id_responsavel" id="id_responsavel">
                     </div>
 
@@ -186,23 +215,23 @@
                     <input type="submit" value="Editar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
-            <!-- Fim do formulÃ¡rio de ediÃ§Ã£o -->
+            <!-- Fim do formulário de edição -->
 
-            <!-- InÃ­cio do formulÃ¡rio deletar -->
+            <!-- Início do formulário deletar -->
 
             <form action="" class="form-consultar-deletar form-auxiliar-visible none">
                 <div class="row">
                     <div class="col1">
-                        <label for="deletar_tipo">Selecione o tipo de usuÃ¡rio:</label><br>
+                        <label for="deletar_tipo">Selecione o tipo de usuário:</label><br>
                         <select name="deletar_tipo" id="deletar_tipo" onchange="changeSelectDeleta()">
                             <option value=""></option>
                             <option value="aluno">Aluno</option>
                             <option value="professor">Professor</option>
-                            <option value="responsavel">ResponsÃ¡vel</option>
+                            <option value="responsavel">Responsável</option>
                         </select>
                     </div>
                     <div class="col2">
-                        <label for="id_usuario">ID do usuÃ¡rio:</label><br>
+                        <label for="id_usuario">ID do usuário:</label><br>
                         <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
@@ -227,7 +256,7 @@
 
                 <div class="row row-responsavel-deleta none">
                     <div class="col1">
-                        <label for="id_responsavel">ID do responsÃ¡vel:</label><br>
+                        <label for="id_responsavel">ID do responsável:</label><br>
                         <input type="text" name="id_responsavel" id="id_responsavel">
                     </div>
 
@@ -239,18 +268,18 @@
                     <input type="submit" value="Deletar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
-            <!-- Fim do formulÃ¡rio deletar -->
+            <!-- Fim do formulário deletar -->
         </div>
     </section>
 
     <footer>
         <p class="heavy">Escola Principal Inova</p>
         <div class="footer-div">
-            <p>SÃ£o Paulo, Brasil</p>
+            <p>São Paulo, Brasil</p>
         </div>
         <div class="footer-div">
             <p class="light">Rua Dr. Ulisses Cirilo, 225</p>
-            <p class="light">SÃ£o Miguel Pta.</p>
+            <p class="light">São Miguel Pta.</p>
         </div>
         <p class="light">(11)3333-3333</p>
         <p class="light">contato@escolaprincipalinova.com.br</p>
@@ -319,7 +348,7 @@
         }
 
         const changeSelect = () => {
-            if (select.value == "aluno") {
+            if (select.value == "1") {
                 document.querySelector('.row-responsavel').classList.remove('none');
             } else {
                 document.querySelector('.row-responsavel').classList.add('none');
@@ -364,6 +393,11 @@
 
 
     </script>
+    <%}
+   else{
+     response.sendRedirect("minha-area.jsp");
+   }
+    %>
 </body>
 
 </html>

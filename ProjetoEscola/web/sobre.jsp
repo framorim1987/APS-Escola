@@ -26,36 +26,36 @@
         </div>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Minha Ã¡rea</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
+            <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
+            <li><a href="minha-area.jsp" class="area">Minha área</a></li>
         </ul>
     </header>
 
     <section>
-        <h2>Sobre nÃ³s</h2>
-        <p>Para todos que desejam ampliar as possibilidades que o futuro nos oferece, a Escola Principal inovaÃ§Ã£o Ã© um
-            lugar que facilita a transformaÃ§Ã£o dos seus sonhos em realidade, utilizamos uma metodologia inovadora, tendo
-            a gameficaÃ§Ã£o como estratÃ©gia de ensino. Diferentemente de outros colÃ©gios onde se utiliza o mÃ©todo
-            tradicional de ensino, nosso colÃ©gio possibilita aos alunos aprender enquanto se divertem.</p>
+        <h2>Sobre nós</h2>
+        <p>Para todos que desejam ampliar as possibilidades que o futuro nos oferece, a Escola Principal inovação é um
+            lugar que facilita a transformação dos seus sonhos em realidade, utilizamos uma metodologia inovadora, tendo
+            a gameficação como estratégia de ensino. Diferentemente de outros colégios onde se utiliza o método
+            tradicional de ensino, nosso colégio possibilita aos alunos aprender enquanto se divertem.</p>
 
         <div class="sobre-container">
             <div class="img">
                 <img src="./images/img-sobre-1.png" alt="">
             </div>
             <div class="text">
-                <h3>MissÃ£o</h3>
-                <p>Nossa missÃ£o facilitar com que nossos alunos alcancem seus sonhos, oferecendo educaÃ§Ã£o de qualidade
-                    de forma inovadora, com conceitos como a gamificaÃ§Ã£o, tornando o processo de aprendizagem mais
-                    agradÃ¡vel.</p>
+                <h3>Missão</h3>
+                <p>Nossa missão facilitar com que nossos alunos alcancem seus sonhos, oferecendo educação de qualidade
+                    de forma inovadora, com conceitos como a gamificação, tornando o processo de aprendizagem mais
+                    agradável.</p>
             </div>
         </div>
 
         <div class="sobre-container">
             <div class="text">
-                <h3>VisÃ£o</h3>
-                <p>Queremos nos tonar referÃªcia na utilizaÃ§Ã£o da gameficaÃ§Ã£o como mÃ©todo de ensino, superando a
-                    concorrÃªncia e em 10 anos ajudar mais de 10 mil alunos a alcanÃ§arem seus sonhos.</p>
+                <h3>Visão</h3>
+                <p>Queremos nos tonar referêcia na utilização da gameficação como método de ensino, superando a
+                    concorrência e em 10 anos ajudar mais de 10 mil alunos a alcançarem seus sonhos.</p>
             </div>
             <div class="img">
                 <img src="./images/img-sobre-2.png" alt="">
@@ -70,8 +70,8 @@
                 <h3>Valores</h3>
 
                 <ul class="list">
-                    <li>EducaÃ§Ã£o</li>
-                    <li>InovaÃ§Ã£o</li>
+                    <li>Educação</li>
+                    <li>Inovação</li>
                     <li>Qualidade</li>
                     <li>Cuidado</li>
                     <li>Empatia</li>
@@ -84,11 +84,11 @@
     <footer>
         <p class="heavy">Escola Principal Inova</p>
         <div class="footer-div">
-            <p>SÃ£o Paulo, Brasil</p>
+            <p>São Paulo, Brasil</p>
         </div>
         <div class="footer-div">
             <p class="light">Rua Dr. Ulisses Cirilo, 225</p>
-            <p class="light">SÃ£o Miguel Pta.</p>
+            <p class="light">São Miguel Pta.</p>
         </div>
         <p class="light">(11)3333-3333</p>
         <p class="light">contato@escolaprincipalinova.com.br</p>

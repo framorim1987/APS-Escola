@@ -16,56 +16,59 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/area-do-professor.css">
-    <title>√Årea do professor</title>
+    <title>¡rea do professor</title>
 </head>
 
 <body>
+        <%  
+            if(session.getAttribute("nomeP")!=null){
+        %>
     <header>
         <div class="logo">
             <h1><a href="index.html"><span class="escola">Escola</span><span class="inova">Inova</span></a></h1>
         </div>
         <ul class="menu">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Sair</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
+            <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
+            <li><a href="sair.jsp" class="area">Sair</a></li>
         </ul>
     </header>
 
     <section class="container-area-do-professor">
         <div class="menu-lateral">
-            <div><a href="#" class="btn-notas active">Lan√ßar notas</a></div>
-            <div><a href="#" class="btn-faltas">Controle de frequ√™ncia</a></div>
+            <div><a href="#" class="btn-notas active">LanÁar notas</a></div>
+            <div><a href="#" class="btn-faltas">Controle de frequÍncia</a></div>
         </div>
         <div class="form-professor">
-            <h2 class="area-do-professor-titulo">√Årea do professor</h2>
+            <h2 class="area-do-professor-titulo">¡rea do professor</h2>
 
-            <!-- In√≠cio do formul√°rio de notas -->
+            <!-- InÌcio do formul·rio de notas -->
             <form action="#" class="form-professor-nota">
                 <div class="row">
                     <div class="col1">
                         <label for="turma_notas">Selecione a turma:</label><br>
                         <select name="turma_notas" id="turma_notas">
                             <option value=""></option>
-                            <option value="1¬∞_A">1¬∞ A</option>
-                            <option value="2¬∞_A">2¬∞ A</option>
-                            <option value="3¬∞_A">3¬∞ A</option>
+                            <option value="1∞_A">1∞ A</option>
+                            <option value="2∞_A">2∞ A</option>
+                            <option value="3∞_A">3∞ A</option>
                         </select>
                     </div>
                     <div class="col2">
                         <label for="disciplinas">Selecione a disciplina:</label><br>
                         <select name="disciplinas" id="disciplinas">
                             <option value=""></option>
-                            <option value="1">L√≠ngua Portuguesa</option>
-                            <option value="2">Reda√ß√£o</option>
-                            <option value="3">Matem√°tica</option>
-                            <option value="4">Hist√≥ria</option>
+                            <option value="1">LÌngua Portuguesa</option>
+                            <option value="2">RedaÁ„o</option>
+                            <option value="3">Matem·tica</option>
+                            <option value="4">HistÛria</option>
                             <option value="5">Geografia</option>
-                            <option value="6">Ci√™ncias</option>
+                            <option value="6">CiÍncias</option>
                             <option value="7">Artes</option>
-                            <option value="8">Educa√ß√£o F√≠sica</option>
-                            <option value="9">Ing√™s</option>
-                            <option value="10">F√≠sica</option>
+                            <option value="8">EducaÁ„o FÌsica</option>
+                            <option value="9">IngÍs</option>
+                            <option value="10">FÌsica</option>
                         </select>
                     </div>
                 </div>
@@ -106,9 +109,9 @@
                     <input type="submit" value="Gravar" class="btn-form-area-do-professor-nota">
                 </div>
             </form>
-            <!-- Fim do formul√°rio de notas -->
+            <!-- Fim do formul·rio de notas -->
 
-            <!-- In√≠cio do formul√°rio de faltas -->
+            <!-- InÌcio do formul·rio de faltas -->
             <form action="#" class="form-professor-falta none">
                 <div class="row">
                     <input type="date">
@@ -116,16 +119,16 @@
                         <label for="disciplinas">Selecione a disciplina:</label><br>
                         <select name="disciplinas" id="disciplinas">
                             <option value=""></option>
-                            <option value="1">L√≠ngua Portuguesa</option>
-                            <option value="2">Reda√ß√£o</option>
-                            <option value="3">Matem√°tica</option>
-                            <option value="4">Hist√≥ria</option>
+                            <option value="1">LÌngua Portuguesa</option>
+                            <option value="2">RedaÁ„o</option>
+                            <option value="3">Matem·tica</option>
+                            <option value="4">HistÛria</option>
                             <option value="5">Geografia</option>
-                            <option value="6">Ci√™ncias</option>
+                            <option value="6">CiÍncias</option>
                             <option value="7">Artes</option>
-                            <option value="8">Educa√ß√£o F√≠sica</option>
-                            <option value="9">Ing√™s</option>
-                            <option value="10">F√≠sica</option>
+                            <option value="8">EducaÁ„o FÌsica</option>
+                            <option value="9">IngÍs</option>
+                            <option value="10">FÌsica</option>
                         </select>
                     </div>
                 </div>
@@ -171,7 +174,7 @@
                     <input type="submit" value="Gravar" class="btn-form-area-do-professor-falta">
                 </div>
             </form>
-            <!-- Fim do formul√°rio de faltas -->
+            <!-- Fim do formul·rio de faltas -->
 
         </div>
     </section>
@@ -179,11 +182,11 @@
     <footer>
         <p class="heavy">Escola Principal Inova</p>
         <div class="footer-div">
-            <p>S√£o Paulo, Brasil</p>
+            <p>S„o Paulo, Brasil</p>
         </div>
         <div class="footer-div">
             <p class="light">Rua Dr. Ulisses Cirilo, 225</p>
-            <p class="light">S√£o Miguel Pta.</p>
+            <p class="light">S„o Miguel Pta.</p>
         </div>
         <p class="light">(11)3333-3333</p>
         <p class="light">contato@escolaprincipalinova.com.br</p>
@@ -232,6 +235,11 @@
         });
 
     </script>
+      <%}
+      else{
+        response.sendRedirect("minha-area.jsp");
+       }      
+      %>
 </body>
 
 </html>
