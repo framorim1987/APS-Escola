@@ -106,7 +106,7 @@
                  if(rs.next()){
                      {                    
                      session.setAttribute("NomeAdm", rs.getString("nome"));
-                     response.sendRedirect("painel-administrador.jsp");
+                     response.sendRedirect("painel-administrador-cadastrar.jsp");
                      }
                  }
                  
