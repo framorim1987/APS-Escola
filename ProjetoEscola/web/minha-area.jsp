@@ -35,13 +35,13 @@
 <body>
         <%  
             if(session.getAttribute("nomeAl")!=null){
-                response.sendRedirect("area-do-aluno.jsp");
+                response.sendRedirect("area-do-aluno-notas.jsp");
             }
             else if(session.getAttribute("nomeP")!=null){
-                response.sendRedirect("area-do-professor.jsp");
+                response.sendRedirect("area-do-professor-notas.jsp");
             }
             else if(session.getAttribute("NomeAdm")!=null){
-                response.sendRedirect("painel-administrador.jsp");
+                response.sendRedirect("painel-administrador-cadastrar.jsp");
             }
             else{%>
             

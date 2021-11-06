@@ -46,7 +46,7 @@
                  if(rs.next()){
                      {                    
                      session.setAttribute("nomeAl", rs.getString("nome"));
-                     response.sendRedirect("area-do-aluno.jsp");
+                     response.sendRedirect("area-do-aluno-notas.jsp");
                      }
                  }
                  
@@ -77,7 +77,7 @@
                  if(rs.next()){
                      {                    
                      session.setAttribute("nomeP", rs.getString("nome"));
-                     response.sendRedirect("area-do-professor.jsp");
+                     response.sendRedirect("area-do-professor-notas.jsp");
                      }
                  }
                  

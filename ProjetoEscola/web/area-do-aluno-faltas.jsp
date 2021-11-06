@@ -37,51 +37,14 @@
 
     <section class="container-area-do-aluno">
         <div class="menu-lateral">
-            <div><a href="#" class="btn-notas active">Consultar notas</a></div>
-            <div><a href="#" class="btn-faltas">Consultar faltas</a></div>
+            <div><a href="area-do-aluno-notas.jsp" class="btn-notas">Consultar notas</a></div>
+            <div><a href="area-do-aluno-faltas.jsp" class="btn-faltas active">Consultar faltas</a></div>
         </div>
         <div class="form-aluno">
             <h2 class="area-do-aluno-titulo">Área do aluno</h2>
 
-            <!-- Início do formulário de notas -->
-            <form action="#" class="form-aluno-nota">
-                <div class="row">
-                    <table class="table-notas">
-                        <thead>
-                            <tr>
-                                <th>Disciplina</th>
-                                <th>Nota 1</th>
-                                <th>Nota 2</th>
-                                <th>Nota final</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Português</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>Inglês</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>Matemática</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-            <!-- Fim do formulário de notas -->
-
             <!-- Início do formulário de faltas -->
-            <form action="#" class="form-aluno-falta none">
+            <form action="#" class="form-aluno-falta">
                 <div class="row">
                     <div class="aluno-faltas">
                         <label for="disciplinas">Selecione a disciplina:</label><br>
@@ -144,32 +107,6 @@
         <span>cookie usage</span>
     </footer>
 
-    <script>
-        const formularioNotas = document.querySelector('.form-aluno-nota');
-        const formularioFaltas = document.querySelector('.form-aluno-falta');
-        const btnNotas = document.querySelector('.btn-notas');
-        const btnFaltas = document.querySelector('.btn-faltas');
-
-        const changeClass = (btnAddClass, btnRemoveClass) => {
-            btnRemoveClass.classList.remove('active');
-            btnAddClass.classList.add('active');
-        }
-
-        const changeForm = (formHide, formShow) => {
-            formShow.classList.remove('none');
-            formHide.classList.add('none');
-        }
-
-        btnFaltas.addEventListener('click', () => {
-            changeClass(btnFaltas, btnNotas);
-            changeForm(formularioNotas, formularioFaltas);
-        })
-
-        btnNotas.addEventListener('click', () => {
-            changeClass(btnNotas, btnFaltas);
-            changeForm(formularioFaltas, formularioNotas);
-        })
-    </script>
     <%}
     else{
        response.sendRedirect("minha-area.jsp");

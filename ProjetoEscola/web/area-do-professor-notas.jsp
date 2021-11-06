@@ -37,8 +37,8 @@
 
     <section class="container-area-do-professor">
         <div class="menu-lateral">
-            <div><a href="#" class="btn-notas active">Lançar notas</a></div>
-            <div><a href="#" class="btn-faltas">Controle de frequência</a></div>
+            <div><a href="area-do-professor-notas.jsp" class="btn-notas active">Lançar notas</a></div>
+            <div><a href="area-do-professor-faltas.jsp" class="btn-faltas">Controle de frequência</a></div>
         </div>
         <div class="form-professor">
             <h2 class="area-do-professor-titulo">Área do professor</h2>
@@ -111,71 +111,6 @@
             </form>
             <!-- Fim do formulário de notas -->
 
-            <!-- Início do formulário de faltas -->
-            <form action="#" class="form-professor-falta none">
-                <div class="row">
-                    <input type="date">
-                    <div class="turma-faltas">
-                        <label for="disciplinas">Selecione a disciplina:</label><br>
-                        <select name="disciplinas" id="disciplinas">
-                            <option value=""></option>
-                            <option value="1">Língua Portuguesa</option>
-                            <option value="2">Redação</option>
-                            <option value="3">Matemática</option>
-                            <option value="4">História</option>
-                            <option value="5">Geografia</option>
-                            <option value="6">Ciências</option>
-                            <option value="7">Artes</option>
-                            <option value="8">Educação Física</option>
-                            <option value="9">Ingês</option>
-                            <option value="10">Física</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <table class="table-faltas">
-                        <thead>
-                            <tr>
-                                <th>ID do Aluno</th>
-                                <th>Nome</th>
-                                <th>Sobrenome</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Felipe</td>
-                                <td>Amorim</td>
-                                <td>
-                                    <select name="teste1" id="turma_notas">
-                                        <option value="presente">Presente</option>
-                                        <option value="falta">Falta</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jonas</td>
-                                <td>Souza</td>
-                                <td>
-                                    <select name="teste2" id="turma_notas">
-                                        <option value="presente">Presente</option>
-                                        <option value="falta">Falta</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-professor-falta">
-                </div>
-            </form>
-            <!-- Fim do formulário de faltas -->
-
         </div>
     </section>
 
@@ -207,34 +142,6 @@
         <span>LGPD</span>
         <span>cookie usage</span>
     </footer>
-
-    <script>
-        const formularioNotas = document.querySelector('.form-professor-nota');
-        const formularioFaltas = document.querySelector('.form-professor-falta');
-        const btnNotas = document.querySelector('.btn-notas');
-        const btnFaltas = document.querySelector('.btn-faltas');
-
-        const changeClass = (btnAddClass, btnRemoveClass) => {
-            btnRemoveClass.classList.remove('active');
-            btnAddClass.classList.add('active');
-        }
-
-        const changeForm = (formHide, formShow) => {
-            formShow.classList.remove('none');
-            formHide.classList.add('none');
-        }
-
-        btnFaltas.addEventListener('click', () => {
-            changeClass(btnFaltas, btnNotas);
-            changeForm(formularioNotas, formularioFaltas);
-        });
-
-        btnNotas.addEventListener('click', () => {
-            changeClass(btnNotas, btnFaltas);
-            changeForm(formularioFaltas, formularioNotas);
-        });
-
-    </script>
       <%}
       else{
         response.sendRedirect("minha-area.jsp");

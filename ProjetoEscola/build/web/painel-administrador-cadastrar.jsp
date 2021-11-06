@@ -16,17 +16,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/painel-administrador.css">
+    <link rel="stylesheet" href="css/estiloMensagem.css" type="text/css" />
     <title>Painel do administrador</title>
-    <style>
-        .sucesso{
-         color: green;
-         font-weight: bold;
-      }
-      .erro{
-          color: red;
-          font-weight: bold;
-      }
-    </style>
 </head>
 
 <body>
@@ -56,15 +47,15 @@
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
             <!-- Início do formulário de cadastro -->
-            <form action="#" class="form-administrador-cadastrar form-administrador-visible">
+            <form action="Cadastro.jsp" class="form-administrador-cadastrar form-administrador-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
                         <select name="cadastrar_tipo" id="cadastrar_tipo" onchange="changeSelectCadastrar()">
                             <option value=""></option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="responsavel">Responsável</option>
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
                         </select>
                     </div>
                     <div class="col2">
@@ -96,7 +87,26 @@
                 <div class="row-btn">
                     <input type="submit" value="Gravar" class="btn-form-area-do-administrador-nota">
                 </div>
-            </form>
+                
+            </form>                
+                  <%
+                    String respSuc= request.getParameter("dadosSuc");
+                    String respErro= request.getParameter("dadosErro");
+                    String respErro2= request.getParameter("dadosErro2");
+                    
+                  if(respSuc!=null){%>                  
+                  <p class="sucesso"><%=respSuc%></p>                    
+                  <%}%>
+                  
+                  <% if(respErro!=null){%>                  
+                  <p class="erro"><%=respErro%></p>                    
+                  <%}%>
+                  
+                  <% if(respErro2!=null){%>                  
+                  <p class="erro">ERRO! Verifique o ID do responsável</p>                    
+                  <%}%>
+                  
+
             <!-- Fim do formulário de cadastro -->
         </div>
     </section>
@@ -133,7 +143,7 @@
     <script>
         const selectCadastrar = document.querySelector('#cadastrar_tipo');
         const changeSelectCadastrar = () => {
-            if (selectCadastrar.value == "aluno") {
+            if (selectCadastrar.value == "1") {
                 document.querySelector('.row-responsavel').classList.remove('none');
             } else {
                 document.querySelector('.row-responsavel').classList.add('none');

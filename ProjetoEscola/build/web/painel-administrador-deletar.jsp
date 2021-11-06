@@ -18,9 +18,29 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/painel-administrador.css">
     <title>Painel do administrador</title>
+    <link rel="stylesheet" href="css/estiloMensagem.css" type="text/css" />
 </head>
 
 <body>
+    
+         <%
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            /*  vamos verificar se esta página está recebendo valores 
+            nos parâmetros para mostrar no segundo formulário  */
+            String nomeP = request.getParameter("nome");
+            String sbNomeP = request.getParameter("sobrenome");
+            String id_User= request.getParameter("idUser");
+            String IDresp = request.getParameter("idResp");
+            String tipoUserAl = request.getParameter("tipoUserAl");
+            
+            if (nomeP == null) nomeP = "";
+            if (sbNomeP == null) sbNomeP = "";
+            if (id_User == null) id_User = "";
+            if (IDresp == null) IDresp = "";
+            
+        %>
+        
     <header>
         <div class="logo">
             <h1><a href="index.html"><span class="escola">Escola</span><span class="inova">Inova</span></a></h1>
@@ -29,7 +49,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="fale-conosco.html">Fale Conosco</a></li>
-            <li><a href="minha-area.html" class="area">Sair</a></li>
+            <li><a href="sair.jsp" class="area">Sair</a></li>
         </ul>
     </header>
 
@@ -44,15 +64,15 @@
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
             <!-- Início do formulário deletar -->
-            <form action="" class="form-consultar-deletar form-auxiliar-visible">
+            <form action="Consultar_1.jsp" class="form-consultar-deletar form-auxiliar-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="deletar_tipo">Selecione o tipo de usuário:</label><br>
-                        <select name="deletar_tipo" id="deletar_tipo" onchange="changeSelectDeleta()">
+                        <select name="consultar_tipo" id="deletar_tipo" onchange="changeSelectDeleta()">
                             <option value=""></option>
-                            <option value="aluno">Aluno</option>
-                            <option value="professor">Professor</option>
-                            <option value="responsavel">Responsável</option>
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
                         </select>
                     </div>
                     <div class="col2">
@@ -60,26 +80,86 @@
                         <input type="text" name="id_usuario" id="id_usuario">
                     </div>
                 </div>
-
+                
                 <div class="row-btn">
                     <input type="submit" value="Consultar" class="btn-form-area-do-administrador-falta">
                 </div>
             </form>
+            
+                  <%                  
+                    String Dados= request.getParameter("dados");
+                    
+                  if(Dados!=null){%>                
+                  <span class="erro">DADOS NÃO ENCONTRADOS</span>                  
+                 <%}%>
 
-            <form action="#" class="form-administrador-deletar form-administrador-visible">
+            <form action="Deletar.jsp" class="form-administrador-deletar form-administrador-visible">
                 <div class="row">
+                    
+                    <%if(request.getParameter("tipoUserAl") != null){%>
+                    <div class="col1">
+                        <label for="deletar_tipo">Tipo de usuário:</label><br>
+                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
+                            <option value="1">Aluno</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
+                        </select>
+                    </div>
+                    <%}
+                    else if(request.getParameter("tipoUserProf") != null){%>
+                    <div class="col1">
+                        <label for="deletar_tipo">Tipo de usuário:</label><br>
+                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
+                            <option value="2">Professor</option>
+                            <option value="3">Responsável</option>
+                            <option value="1">Aluno</option>
+                        </select>
+                    </div>
+                   <%}
+                    else if(request.getParameter("tipoUserResp") != null){%>
+                    <div class="col1">
+                        <label for="deletar_tipo">Tipo de usuário:</label><br>
+                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
+                            <option value="3">Responsável</option>
+                            <option value="2">Professor</option> 
+                            <option value="1">Aluno</option>
+                        </select>
+                    </div>
+                   <%}%>
+                    
+                   <%if(request.getParameter("idUser") != null){%>
+                    <div class="col2">
+                        <label for="id_usuario">ID do usuário:</label><br>
+                        <input type="text" name="ID_Usuario" id="id_usuario" value="<%=id_User%>">
+                    </div>
+                    
                     <div class="col1">
                         <label for="nome">Nome:</label><br>
-                        <input type="text" name="nome" id="nome">
+                        <input type="text" name="nome" id="nome" value="<%=nomeP%>">
                     </div>
 
                     <div class="col2">
                         <label for="sobrenome">Sobrenome:</label><br>
-                        <input type="text" name="sobrenome" id="sobrenome">
+                        <input type="text" name="sobrenome" id="sobrenome" value="<%=sbNomeP%>">
                     </div>
                 </div>
+                 
+                    
+               <%
+                if(request.getParameter("idResp") != null){%>
+                    <div class="">
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_resp" id="id_resp" value="<%=IDresp%>">
+                    </div>
+               <%}%>
+               
+                <div class="row-btn">
+                    <input type="submit" name="bt_delete" value="Deletar" class="btn-form-area-do-administrador-falta">
+              <%--      <button name="dele" value="Calcular">Deletar</button> --%>
+                </div>
+               <%}%>
 
-                <div class="row row-responsavel-deleta none">
+               <%--  <div class="row row-responsavel-deleta none">
                     <div class="col1">
                         <label for="id_responsavel">ID do responsável:</label><br>
                         <input type="text" name="id_responsavel" id="id_responsavel">
@@ -87,11 +167,19 @@
 
                     <div class="col2">
                     </div>
-                </div>
+                </div> --%>
 
-                <div class="row-btn">
-                    <input type="submit" value="Deletar" class="btn-form-area-do-administrador-falta">
-                </div>
+
+                  <%                  
+                    String Suc= request.getParameter("suc");
+                    String Erro= request.getParameter("erro");
+                    
+                  if(Suc!=null){%>                
+                  <p class="sucesso">DADOS DELETADOS COM SUCESSO</p>                    
+                 <%}
+                  else if(Erro!=null){%>                
+                  <p class="erro">ERRO AO DELETAR OS DADOS</p>                    
+                 <%}%>
             </form>
             <!-- Fim do formulário deletar -->
         </div>
@@ -129,7 +217,7 @@
     <script>
         const selectDeleta = document.querySelector('#deletar_tipo');
         const changeSelectDeleta = () => {
-            if (selectDeleta.value == "aluno") {
+            if (selectDeleta.value == "1") {
                 document.querySelector('.row-responsavel-deleta').classList.remove('none');
             } else {
                 document.querySelector('.row-responsavel-deleta').classList.add('none');
