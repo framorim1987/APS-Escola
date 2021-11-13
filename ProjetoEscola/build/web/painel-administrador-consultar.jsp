@@ -23,17 +23,22 @@
 
 <body>
      <%
+                  
+            if(session.getAttribute("NomeAdm")!=null){
+        
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
-            /*  vamos verificar se esta página está recebendo valores 
-            nos parâmetros para mostrar no segundo formulário  */
+            
+            
             String nomeP = request.getParameter("nome");
             String sbNomeP = request.getParameter("sobrenome");
             String IDresp = request.getParameter("idResp");
+            String Turma = request.getParameter("turma");
             
             if (nomeP == null) nomeP = "";
             if (sbNomeP == null) sbNomeP = "";
             if (IDresp == null) IDresp = "";
+            if (Turma == null) Turma = "";
         %>
     <header>
         <div class="logo">
@@ -44,6 +49,7 @@
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="fale-conosco.html">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -58,7 +64,7 @@
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
             <!-- Início do formulário de consulta -->
-            <form action="Consultar.jsp" class="form-administrador-consultar form-administrador-visible">
+            <form action="Consultar.jsp"  method="post" class="form-administrador-consultar form-administrador-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="consultar_tipo">Selecione o tipo de usuário:</label><br>
@@ -87,34 +93,35 @@
                 <div class="row">
                     <div class="col1">
                         <label for="nome">Nome:</label><br>
-                        <input type="text" name="nome" id="nome" value="<%=nomeP%>">
+                        <input type="text" name="nome" id="nome" value="<%=nomeP%>" readonly="readonly">
                     </div>
 
                     <div class="col2">
                         <label for="sobrenome">Sobrenome:</label><br>
-                        <input type="text" name="sobrenome" id="sobrenome" value="<%=sbNomeP%>">
+                        <input type="text" name="sobrenome" id="sobrenome" value="<%=sbNomeP%>" readonly="readonly">
                     </div>
                 </div>
                 <%}%>
                     
                 <%
                 if(request.getParameter("idResp") != null){%>
-                    <div class="">
-                        <label for="id_responsavel">ID do responsável:</label><br>
-                        <input type="text" name="id_responsavel" id="id_resp" value="<%=IDresp%>">
-                    </div>
-               <%}%>
-                <%--
-                <div class="row row-responsavel-consulta none">
+                <div class="row row-responsavel-consulta">
+
                     <div class="col1">
-                        <label for="id_responsavel">ID do responsável:</label><br>
-                        <input type="text" name="id_responsavel" id="id_responsavel">
+                        <label for="id_turma">Turma:</label><br>
+                        <input type="text" name="turma" id="id_turma" value="<%=Turma%>" readonly="readonly">
                     </div>
 
+
                     <div class="col2">
-                    </div>
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_responsavel" id="id_resp" value="<%=IDresp%>" readonly="readonly">
+                    </div>                    
+
                 </div>
-                --%>
+                    
+               <%}%>
+
 
             </form>
             
@@ -167,7 +174,9 @@
                     }
                 }
             </script>
-      
+            <%} else {
+              response.sendRedirect("minha-area.jsp");
+          }%>
 </body>
 
 </html>

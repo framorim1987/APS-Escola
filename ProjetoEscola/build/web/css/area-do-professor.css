@@ -81,9 +81,18 @@
     border-collapse: collapse;
 }
 
+
+.table-notas-alunos{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
 th, td {
     border: 1px solid black;
 }
+
+
 
 .turma-faltas {
     width: 200px;

@@ -14,8 +14,10 @@
     </head>
     <body>
 <%  
+    if(session.getAttribute("NomeAdm")!=null){ 
+        
     if(request.getParameter("consultar_tipo").equals("1")){
-    String sql, nome="", sobrenome="";
+    String sql, nome="", sobrenome="",turma= "";
     int IDresp= 0;
     ResultSet rs=null;
     PreparedStatement pstm= null;
@@ -33,13 +35,15 @@
             nome=rs.getString("Nome");            
             sobrenome=rs.getString("Sobrenome");
             IDresp = rs.getInt("id_Responsavel");
+            turma = rs.getString("Turma");
           
 
             
     String nomeEncoded = URLEncoder.encode(nome, StandardCharsets.UTF_8.toString());        
     String sbEncoded = URLEncoder.encode(sobrenome, StandardCharsets.UTF_8.toString());
+    String turmaAl = URLEncoder.encode(turma, StandardCharsets.UTF_8.toString());
     String dst = "painel-administrador-consultar.jsp?nome=" + nomeEncoded 
-            + "&sobrenome=" + sbEncoded + "&idResp=" + IDresp;
+            + "&sobrenome=" + sbEncoded + "&idResp=" + IDresp + "&turma=" + turmaAl;
     response.sendRedirect(dst);
         }
         else{
@@ -49,12 +53,12 @@
     } catch (SQLException ex) {
         response.sendRedirect("painel-administrador-consultar.jsp?dados=erro");
     } 
-    finally { //parte finally, sempre será executada
+    finally {
         if (rs != null) rs.close();
         if (pstm != null) pstm.close();
         if (con != null) con.close();
     }
-    //para permitir caracteres especiais do nome do aluno na URL:
+  
 
 }
 
@@ -90,7 +94,7 @@
     } catch (SQLException ex) {
         response.sendRedirect("painel-administrador-consultar.jsp?dados=erro");
     } 
-    finally { //parte finally, sempre será executada
+    finally {
         if (rs != null) rs.close();
         if (pstm != null) pstm.close();
         if (con != null) con.close();
@@ -130,7 +134,7 @@
     } catch (SQLException ex) {
         response.sendRedirect("painel-administrador-consultar.jsp?dados=erro");
     }  
-    finally { //parte finally, sempre será executada
+    finally {
         if (rs != null) rs.close();
         if (pstm != null) pstm.close();
         if (con != null) con.close();
@@ -139,6 +143,10 @@
        else{
            response.sendRedirect("painel-administrador-consultar.jsp");
        }
+    }
+     else {
+           response.sendRedirect("minha-area.jsp");
+        }
 %>
     </body>
 </html>

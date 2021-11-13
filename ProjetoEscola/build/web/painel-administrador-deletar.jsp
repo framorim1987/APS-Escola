@@ -24,20 +24,24 @@
 <body>
     
          <%
+            if(session.getAttribute("NomeAdm")!=null){
+                
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
-            /*  vamos verificar se esta página está recebendo valores 
-            nos parâmetros para mostrar no segundo formulário  */
+            
             String nomeP = request.getParameter("nome");
             String sbNomeP = request.getParameter("sobrenome");
             String id_User= request.getParameter("idUser");
             String IDresp = request.getParameter("idResp");
+            
             String tipoUserAl = request.getParameter("tipoUserAl");
+            String Turma = request.getParameter("turma");
             
             if (nomeP == null) nomeP = "";
             if (sbNomeP == null) sbNomeP = "";
             if (id_User == null) id_User = "";
             if (IDresp == null) IDresp = "";
+            if (Turma == null) Turma = "";
             
         %>
         
@@ -50,6 +54,7 @@
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="fale-conosco.html">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -64,7 +69,7 @@
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
             <!-- Início do formulário deletar -->
-            <form action="Consultar_1.jsp" class="form-consultar-deletar form-auxiliar-visible">
+            <form action="Consultar_(Deletar).jsp" method="post" class="form-consultar-deletar form-auxiliar-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="deletar_tipo">Selecione o tipo de usuário:</label><br>
@@ -93,81 +98,93 @@
                   <span class="erro">DADOS NÃO ENCONTRADOS</span>                  
                  <%}%>
 
-            <form action="Deletar.jsp" class="form-administrador-deletar form-administrador-visible">
+            <form action="DeletarUsuario.jsp" method="post" class="form-administrador-deletar form-administrador-visible">
+               
+               <%if (request.getParameter("idUser") != null) {%> 
+               
+                <p class="info">
+                    *Os campos: Tipo de usuário e ID do usuário estão apenas no modo de exibição, 
+                    para confirmar os dados.
+                    
+                
+                </p><br>
+                
                 <div class="row">
-                    
-                    <%if(request.getParameter("tipoUserAl") != null){%>
+
+                    <%if (request.getParameter("tipoUserAl") != null) {%>
+
                     <div class="col1">
-                        <label for="deletar_tipo">Tipo de usuário:</label><br>
-                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
-                            <option value="1">Aluno</option>
-                            <option value="2">Professor</option>
-                            <option value="3">Responsável</option>
-                        </select>
+                        
+                        <label for="nome">Tipo de usuário:</label><br>
+                        <input type="text" name="tipo_usuario" value="Aluno" id="nome" readonly="readonly">
+
                     </div>
-                    <%}
-                    else if(request.getParameter("tipoUserProf") != null){%>
+
+                    <%} else if (request.getParameter("tipoUserProf") != null) {%>
+
                     <div class="col1">
-                        <label for="deletar_tipo">Tipo de usuário:</label><br>
-                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
-                            <option value="2">Professor</option>
-                            <option value="3">Responsável</option>
-                            <option value="1">Aluno</option>
-                        </select>
+                        
+                        <label for="nome">Tipo de usuário:</label><br>
+                        <input type="text" name="tipo_usuario" value="Professor" id="nome" readonly="readonly">
+                       
                     </div>
-                   <%}
-                    else if(request.getParameter("tipoUserResp") != null){%>
+                    <%} else if (request.getParameter("tipoUserResp") != null) {%>
+
                     <div class="col1">
-                        <label for="deletar_tipo">Tipo de usuário:</label><br>
-                        <select name="tipo_usuario" id="deletar_tipo" onchange="changeSelectDeleta()">
-                            <option value="3">Responsável</option>
-                            <option value="2">Professor</option> 
-                            <option value="1">Aluno</option>
-                        </select>
+                        <label for="nome">Tipo de usuário:</label><br>
+                        <input type="text" name="tipo_usuario" value="Responsável" for="nome" readonly="readonly">
                     </div>
-                   <%}%>
-                    
-                   <%if(request.getParameter("idUser") != null){%>
+                    <%}%>
+
+                    <%if (request.getParameter("idUser") != null) {%>
                     <div class="col2">
                         <label for="id_usuario">ID do usuário:</label><br>
-                        <input type="text" name="ID_Usuario" id="id_usuario" value="<%=id_User%>">
+                        <input type="text" name="ID_Usuario" id="id_usuario" value="<%=id_User%>" readonly="readonly">
                     </div>
-                    
+
+                </div>
+                <div class="row">
                     <div class="col1">
                         <label for="nome">Nome:</label><br>
-                        <input type="text" name="nome" id="nome" value="<%=nomeP%>">
+                        <input type="text" name="nome" id="nome" value="<%=nomeP%>" readonly="readonly">
                     </div>
 
                     <div class="col2">
                         <label for="sobrenome">Sobrenome:</label><br>
-                        <input type="text" name="sobrenome" id="sobrenome" value="<%=sbNomeP%>">
+                        <input type="text" name="sobrenome" id="sobrenome" value="<%=sbNomeP%>" readonly="readonly">
                     </div>
                 </div>
+                
                  
                     
                <%
                 if(request.getParameter("idResp") != null){%>
-                    <div class="">
-                        <label for="id_responsavel">ID do responsável:</label><br>
-                        <input type="text" name="id_resp" id="id_resp" value="<%=IDresp%>">
+
+                    
+              <div class="row row-responsavel-consulta">
+
+                    <div class="col1">
+                        <label for="id_turma">Turma:</label><br>
+                        <input type="text" name="turma" id="id_turma" value="<%=Turma%>" readonly="readonly">
                     </div>
+                    
+                     <div class="col2">
+                        <label for="id_responsavel">ID do responsável:</label><br>
+                        <input type="text" name="id_resp" id="id_resp" value="<%=IDresp%>" readonly="readonly">
+                    </div>
+
+                </div>
                <%}%>
                
                 <div class="row-btn">
                     <input type="submit" name="bt_delete" value="Deletar" class="btn-form-area-do-administrador-falta">
               <%--      <button name="dele" value="Calcular">Deletar</button> --%>
                 </div>
-               <%}%>
+               <%}
+               }
+               %>
 
-               <%--  <div class="row row-responsavel-deleta none">
-                    <div class="col1">
-                        <label for="id_responsavel">ID do responsável:</label><br>
-                        <input type="text" name="id_responsavel" id="id_responsavel">
-                    </div>
 
-                    <div class="col2">
-                    </div>
-                </div> --%>
 
 
                   <%                  
@@ -224,6 +241,9 @@
             }
         }
     </script>
+    <%} else {
+            response.sendRedirect("minha-area.jsp");
+        }%>
 </body>
 
 </html>

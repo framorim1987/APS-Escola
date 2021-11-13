@@ -8,3 +8,9 @@
          font-size: 15pt;
          font-weight: bold;
       }
+       a{
+            text-decoration: none;
+        }
+        .info{
+            font-size: 10px;
+        }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/area-do-professor.css">
+    <link rel="stylesheet" href="css/estiloMensagem.css" type="text/css" />
     <title>Área do professor</title>
 </head>
 
@@ -32,6 +33,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -43,70 +45,35 @@
         <div class="form-professor">
             <h2 class="area-do-professor-titulo">Área do professor</h2>
 
-            <!-- Início do formulário de faltas -->
-            <form action="#" class="form-professor-falta">
+           
+            <form action="FormListarAlunos_Faltas.jsp" class="form-professor-falta">
                 <div class="row">
-                    <input type="date">
+                    
                     <div class="turma-faltas">
-                        <label for="disciplinas">Selecione a disciplina:</label><br>
-                        <select name="disciplinas" id="disciplinas">
+                        <label for="campo_turma">Selecione a turma:</label><br>
+                        <select name="turma" id="campo_turma" required="required">
                             <option value=""></option>
-                            <option value="1">Língua Portuguesa</option>
-                            <option value="2">Redação</option>
-                            <option value="3">Matemática</option>
-                            <option value="4">História</option>
-                            <option value="5">Geografia</option>
-                            <option value="6">Ciências</option>
-                            <option value="7">Artes</option>
-                            <option value="8">Educação Física</option>
-                            <option value="9">Ingês</option>
-                            <option value="10">Física</option>
+                            <option value="1_A">1º A</option>
+                            <option value="1_B">1º B</option>
+                            <option value="2_A">2º A</option>
+                            <option value="2_B">2º B</option>
+                            <option value="3_A">3º A</option>
+                            <option value="3_B">3º B</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="row">
-                    <table class="table-faltas">
-                        <thead>
-                            <tr>
-                                <th>ID do Aluno</th>
-                                <th>Nome</th>
-                                <th>Sobrenome</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Felipe</td>
-                                <td>Amorim</td>
-                                <td>
-                                    <select name="teste1" id="turma_notas">
-                                        <option value="presente">Presente</option>
-                                        <option value="falta">Falta</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jonas</td>
-                                <td>Souza</td>
-                                <td>
-                                    <select name="teste2" id="turma_notas">
-                                        <option value="presente">Presente</option>
-                                        <option value="falta">Falta</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+             <input type="submit" value="Listar Alunos" class="btn-form-area-do-professor-falta">
+            
+            </form><br>
+                 
+            <%
+                String respErro = request.getParameter("dadosErro");
+                
+             if (respErro != null) {%>                  
+            <p class="erro"><%=respErro%></p>                    
+            <%}%>
 
-                <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-professor-falta">
-                </div>
-            </form>
-            <!-- Fim do formulário de faltas -->
 
         </div>
     </section>

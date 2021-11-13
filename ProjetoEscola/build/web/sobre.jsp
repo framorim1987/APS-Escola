@@ -29,6 +29,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="minha-area.jsp" class="area">Minha área</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 

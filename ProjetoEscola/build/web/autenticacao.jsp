@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ include file="conecta.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,28 +9,9 @@
     </head>
     <body>
              
-        <% 
-            Connection con=null;
-            PreparedStatement pstm= null;
-            try{
-            String serverName= "localhost:3306";
-            String dataBase= "inova";
-            String userName= "root";
-            String password= "12345";
-            String driverName = "com.mysql.jdbc.Driver";
-            Class.forName(driverName);
-            
-            String url = "jdbc:mysql://" + serverName + "/" + dataBase;
-            
-            con= DriverManager.getConnection(url,userName,password);
-            }
-
-            catch(SQLException ex){
-                out.print(ex.getMessage());
-            }
-            %>
-            
+             
             <%
+                PreparedStatement pstm= null;
                 //USUÁRIO ALUNO
                 if(request.getParameter("tipo_usuario").equals("1")){
                   
@@ -37,7 +19,7 @@
                 ResultSet rs= null;
                 
                 try{
-                 sql= "SELECT nome FROM tb_aluno WHERE login= ? and senha= ?";
+                 sql= "SELECT * FROM tb_aluno WHERE login= ? and senha= ?";
                  pstm = con.prepareStatement(sql);
                  pstm.setString(1, request.getParameter("Login"));
                  pstm.setString(2, request.getParameter("entradaSenha"));
@@ -46,6 +28,7 @@
                  if(rs.next()){
                      {                    
                      session.setAttribute("nomeAl", rs.getString("nome"));
+                     session.setAttribute("idAluno", rs.getInt("id_Aluno"));
                      response.sendRedirect("area-do-aluno-notas.jsp");
                      }
                  }
@@ -68,7 +51,7 @@
                 ResultSet rs= null;
                 
                 try{
-                 sql= "SELECT nome FROM tb_professor WHERE login= ? and senha= ?";
+                 sql= "SELECT * FROM tb_professor WHERE login= ? and senha= ?";
                  pstm = con.prepareStatement(sql);
                  pstm.setString(1, request.getParameter("Login"));
                  pstm.setString(2, request.getParameter("entradaSenha"));
@@ -77,6 +60,7 @@
                  if(rs.next()){
                      {                    
                      session.setAttribute("nomeP", rs.getString("nome"));
+                     session.setAttribute("idProf", rs.getInt("id_Professor"));
                      response.sendRedirect("area-do-professor-notas.jsp");
                      }
                  }

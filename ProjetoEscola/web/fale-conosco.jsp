@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/fale-conosco.css">
+    <link rel="stylesheet" href="css/estiloMensagem.css" type="text/css" />
     <title>Fale Conosco</title>
 </head>
 
@@ -29,11 +30,12 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="minha-area.jsp" class="area">Minha área</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
     <section class="fale-conosco">
-        <form class="left" action="#">
+        <form class="left" action="ProcessarFaleConosco.jsp" method="post">
             <div>
                 <label for="id-subject">Assunto:</label><br>
                 <select name="subject" class="max-size" id="id-subject">
@@ -48,28 +50,35 @@
 
             <div>
                 <label for="name">Nome:</label><br>
-                <input type="text" class="max-size" id="name" required>
+                <input type="text" name="nome" class="max-size" id="name" required>
             </div>
 
             <div class="medium-size">
                 <div>
                     <label for="email">E-mail:</label><br>
-                    <input type="email" id="email" required>
+                    <input type="email" name="email" id="email" required>
                 </div>
 
                 <div>
                     <label for="fone">Telefone:</label><br>
-                    <input type="text" id="fone" required>
+                    <input type="text" name="tell" id="fone" required maxlength="13">
                 </div>
             </div>
 
             <div>
                 <label for="message">Mensagem:</label><br>
-                <textarea name="message" class="max-size" id="message" cols="30" rows="10"></textarea>
+                <textarea name="menssagem" value="efefefe" class="max-size" id="message" cols="30" rows="10"></textarea>
             </div>
             <span class="container">
                 <input type="submit" class="btn-submit" id="submit" value="Enviar">
             </span>
+            
+            <%
+                String confirmado = request.getParameter("conf");
+            
+	         if (confirmado != null)
+		out.println("<div class='sucesso'> DADOS ENVIADOS COM SUCESSO</div>");
+            %>
         </form>
 
         <div class="right">

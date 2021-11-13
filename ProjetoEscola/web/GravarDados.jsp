@@ -1,8 +1,4 @@
-<%-- 
-    Document   : GravarDados
-    Created on : 27/10/2021, 01:10:42
-    Author     : Matheus
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

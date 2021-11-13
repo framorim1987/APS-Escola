@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/area-do-professor.css">
+    <link rel="stylesheet" href="css/estiloMensagem.css" type="text/css" />
     <title>Área do professor</title>
 </head>
 
@@ -32,6 +34,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -43,73 +46,41 @@
         <div class="form-professor">
             <h2 class="area-do-professor-titulo">Área do professor</h2>
 
-            <!-- Início do formulário de notas -->
-            <form action="#" class="form-professor-nota">
-                <div class="row">
-                    <div class="col1">
-                        <label for="turma_notas">Selecione a turma:</label><br>
-                        <select name="turma_notas" id="turma_notas">
+        
+            
+            <form action="FormListarAlunos_Notas.jsp" class="form-professor-nota">
+                
+                 <div class="row">
+                    
+                    <div class="turma-faltas">
+                        <label for="campo_turma">Selecione a turma:</label><br>
+                        <select name="turma" id="campo_turma" required="required">
                             <option value=""></option>
-                            <option value="1°_A">1° A</option>
-                            <option value="2°_A">2° A</option>
-                            <option value="3°_A">3° A</option>
-                        </select>
-                    </div>
-                    <div class="col2">
-                        <label for="disciplinas">Selecione a disciplina:</label><br>
-                        <select name="disciplinas" id="disciplinas">
-                            <option value=""></option>
-                            <option value="1">Língua Portuguesa</option>
-                            <option value="2">Redação</option>
-                            <option value="3">Matemática</option>
-                            <option value="4">História</option>
-                            <option value="5">Geografia</option>
-                            <option value="6">Ciências</option>
-                            <option value="7">Artes</option>
-                            <option value="8">Educação Física</option>
-                            <option value="9">Ingês</option>
-                            <option value="10">Física</option>
+                            <option value="1_A">1º A</option>
+                            <option value="1_B">1º B</option>
+                            <option value="2_A">2º A</option>
+                            <option value="2_B">2º B</option>
+                            <option value="3_A">3º A</option>
+                            <option value="3_B">3º B</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col1">
-                        <label for="aluno">Selecione o aluno:</label><br>
-                        <select name="aluno" id="aluno">
-                            <option value=""></option>
-                            <option value="Arthur">Arthur</option>
-                            <option value="Felipe">Felipe</option>
-                            <option value="Gustavo">Gustavo</option>
-                            <option value="Gabriel">Gabriel</option>
-                            <option value="Matheus">Matheus</option>
-                        </select>
-                    </div>
+ 
 
-                    <div class="col2">
-                        <label for="tipo-nota">Tipo de nota:</label><br>
-                        <select name="tipo-nota" id="tipo-nota">
-                            <option value=""></option>
-                            <option value="Nota_1">A1</option>
-                            <option value="Nota_2">A2</option>
-                        </select>
-                    </div>
-                </div>
+             
+             <input type="submit" value="Listar Alunos" class="btn-form-area-do-professor-falta">
+             
+            </form><br>
+            
+                  <%
+                    String respErro= request.getParameter("dadosErro");
+ 
+                   if(respErro!=null){%>                  
+                  <p class="erro">ERRO ao listar as notas</p>                    
+                  <%}%>
+                 
 
-                <div class="row">
-                    <div class="col1">
-                        <label for="valor-nota">Valor da nota:</label><br>
-                        <input type="number" name="valor-nota" id="valor-nota">
-                    </div>
-
-                    <div class="col2">
-                    </div>
-                </div>
-                <div class="row-btn">
-                    <input type="submit" value="Gravar" class="btn-form-area-do-professor-nota">
-                </div>
-            </form>
-            <!-- Fim do formulário de notas -->
 
         </div>
     </section>

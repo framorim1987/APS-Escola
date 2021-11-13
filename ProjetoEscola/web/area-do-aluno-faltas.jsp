@@ -20,7 +20,15 @@
 </head>
 
 <body>
+
         <%  
+            String faltas = request.getParameter("faltas");
+            
+            if (faltas == null) faltas = "";
+            
+           String idFalta = request.getParameter("idFalta");            
+            if (idFalta == null) idFalta = "";
+            
             if(session.getAttribute("nomeAl")!=null){
         %>
     <header>
@@ -32,6 +40,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -44,11 +53,11 @@
             <h2 class="area-do-aluno-titulo">Área do aluno</h2>
 
             <!-- Início do formulário de faltas -->
-            <form action="#" class="form-aluno-falta">
+            <form action="Consultar_Faltas.jsp" class="form-aluno-falta">
                 <div class="row">
                     <div class="aluno-faltas">
                         <label for="disciplinas">Selecione a disciplina:</label><br>
-                        <select name="disciplinas" id="disciplinas">
+                        <select name="disciplina" id="disciplinas">
                             <option value=""></option>
                             <option value="1">Língua Portuguesa</option>
                             <option value="2">Redação</option>
@@ -67,7 +76,7 @@
                 <div class="row">
                     <div class="col1">
                         <label for="total_faltas">Total de faltas:</label><br>
-                        <input type="text" readonly>
+                        <input type="text" value="<%=faltas%>" readonly>
                     </div>
                     <div class="col2">
                         <input type="submit" value="Buscar" class="btn-form-area-do-aluno-falta">

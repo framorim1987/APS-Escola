@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ include file="conecta.jsp" %>
 <html lang="pt-br">
 
 <head>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/area-do-aluno.css">
+    <link rel="stylesheet" href="css/estiloMensagem.css">
     <title>Área do aluno</title>
 </head>
 
@@ -32,6 +34,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -43,42 +46,62 @@
         <div class="form-aluno">
             <h2 class="area-do-aluno-titulo">Área do aluno</h2>
 
-            <!-- Início do formulário de notas -->
-            <form action="#" class="form-aluno-nota">
-                <div class="row">
-                    <table class="table-notas">
-                        <thead>
-                            <tr>
-                                <th>Disciplina</th>
-                                <th>Nota 1</th>
-                                <th>Nota 2</th>
-                                <th>Nota final</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Português</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>Inglês</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <td>Matemática</td>
-                                <td>6</td>
-                                <td>8</td>
-                                <td>7</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-            <!-- Fim do formulário de notas -->
+            <!-- Início da tabela de notas -->
+
+            <%  
+            
+               
+                PreparedStatement pstm= null;
+                ResultSet rs = null;
+                String sql;
+                try {%>
+                
+            <table  class="table-notas" border="1" cellspacing="0" cellpadding="2" class="table-faltas">
+                
+            <tr>
+                <th class="justifesquerda"><strong>&nbsp; Disciplina &nbsp;</strong></th>
+                <th class="justifesquerda"><strong>&nbsp; Nota A1 &nbsp;</strong></th>
+                <th class="justifesquerda"><strong>&nbsp; Nota A2 &nbsp;</strong></th>
+                <th class="justifesquerda"><strong>&nbsp; Nota Final &nbsp;</strong></th>
+            </tr>
+            <%
+                   
+                   int id_aluno= (int)session.getAttribute("idAluno");
+                   
+                    pstm = con.prepareStatement("SELECT DISTINCT tb_nota.id_Disciplina, tb_disciplina.Nome_Disciplina, tb_nota.notaA1,tb_nota.notaA2 FROM tb_nota" +
+                                          " INNER JOIN tb_disciplina ON tb_nota.id_Disciplina=tb_disciplina.id_Disciplina WHERE tb_nota.id_Aluno= ?");
+
+                    pstm.setInt(1, id_aluno);
+                    
+                    rs = pstm.executeQuery();                    
+
+                   
+                    while (rs.next()) {
+                        float nota1 = rs.getFloat("tb_nota.notaA1");
+                        float nota2 = rs.getFloat("tb_nota.notaA2");
+                        String Disc = rs.getString("Nome_Disciplina");
+            %>
+            <tr>            
+                
+               
+                <td><%= Disc%></td>
+                <td><%= nota1%></td>
+                <td><%= nota2%></td>
+                <td><%= (nota1 + nota2) %></td>
+            </tr>
+            <%
+                }
+                } catch (Exception ex) {
+                        out.print("<p class='erro'>Erro ao listar as notas</p>" + ex.getMessage());
+                }
+                finally {
+                    if (rs != null)  rs.close();
+                    if (pstm != null) pstm.close();
+                    if (con != null) con.close();
+                }
+            %> 
+                </table><br>
+            <!-- Fim da tabela de notas -->
 
         </div>
     </section>

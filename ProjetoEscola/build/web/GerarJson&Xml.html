@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gera XML e JSON</title>
+    <style>
+        body {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .container_btn a {
+            display: inline-block;
+            margin: 10px;
+            background-color: #e98a15;
+            color: #f1f1f1;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: .2s;
+        }
+
+        .container_btn a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Criação de JSON e XML</h2>
+    <h3>para gerar os arquivos acesse os botôes Gera JSON e Gera XML</h3>
+    <p>Nesta página podemos acessar duas páginas Web para geração de dados para aplicativos "clientes" </p>
+    <p>A primeira página gera JSON a partir da tabela de alunos do banco de dados. Possibilita acesso a lista de todos
+        os alunos</p>
+    <p>A segunda página gera XML a partir da tabela de professores do banco de dados. Possibilita acesso a lista de
+        todos os professores</p>
+    <div class="container_btn">
+        <a href="gerarJSON.jsp" target="_blank" class="btn">Gera JSON</a>
+        <a href="gerarXML.jsp" target="_blank" class="btn">Gera XML</a>
+    </div>
+</body>
+
+</html>

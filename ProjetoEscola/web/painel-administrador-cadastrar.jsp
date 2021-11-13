@@ -33,6 +33,7 @@
             <li><a href="sobre.jsp">Sobre</a></li>
             <li><a href="fale-conosco.jsp">Fale Conosco</a></li>
             <li><a href="sair.jsp" class="area">Sair</a></li>
+            <li><a href="GerarJson&Xml.html">Gerar JSON e XML</a></li>
         </ul>
     </header>
 
@@ -47,7 +48,7 @@
             <h2 class="area-do-administrador-titulo">Painel do administrador</h2>
 
             <!-- Início do formulário de cadastro -->
-            <form action="Cadastro.jsp" class="form-administrador-cadastrar form-administrador-visible">
+            <form action="Cadastro.jsp" method="post" class="form-administrador-cadastrar form-administrador-visible">
                 <div class="row">
                     <div class="col1">
                         <label for="cadastrar_tipo">Selecione o tipo de usuário:</label><br>
@@ -75,14 +76,40 @@
                 </div>
 
                 <div class="row row-responsavel none">
+
                     <div class="col1">
+                        <label for="campo_turma">Selecione a turma:</label><br>
+                        <select name="turma" id="campo_turma">
+                            <option value=""></option>
+                            <option value="1_A">1º A</option>
+                            <option value="1_B">1º B</option>
+                            <option value="2_A">2º A</option>
+                            <option value="2_B">2º B</option>
+                            <option value="3_A">3º A</option>
+                            <option value="3_B">3º B</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col2">
                         <label for="id_responsavel">ID do responsável:</label><br>
-                        <input type="text" name="id_responsavel" id="id_responsavel">
+                        <input type="text" name="id_responsavel" id="id_resp" value="">
+                    </div>   
+
+                </div>
+                
+                <div class="row row-email">
+                    <div class="col1">
+                        <label for="email">Login:</label><br>
+                        <input type="text" name="email" id="email">
                     </div>
 
                     <div class="col2">
+                        <label for="senha">Senha: </label><br>
+                        <input type="text" name="senha" id="senha">
                     </div>
                 </div>
+                
 
                 <div class="row-btn">
                     <input type="submit" value="Gravar" class="btn-form-area-do-administrador-nota">
@@ -93,6 +120,7 @@
                     String respSuc= request.getParameter("dadosSuc");
                     String respErro= request.getParameter("dadosErro");
                     String respErro2= request.getParameter("dadosErro2");
+                    String UserExist= request.getParameter("UserExis");
                     
                   if(respSuc!=null){%>                  
                   <p class="sucesso"><%=respSuc%></p>                    
@@ -104,6 +132,9 @@
                   
                   <% if(respErro2!=null){%>                  
                   <p class="erro">ERRO! Verifique o ID do responsável</p>                    
+                  <%}
+                  if(UserExist!=null){%>                  
+                  <p class="erro">Login já cadastrado, informe outro</p>                    
                   <%}%>
                   
 
@@ -143,12 +174,21 @@
     <script>
         const selectCadastrar = document.querySelector('#cadastrar_tipo');
         const changeSelectCadastrar = () => {
+            if (selectCadastrar.value == "3") {
+                document.querySelector('.row-email').classList.add('none');
+            } else {
+                document.querySelector('.row-email').classList.remove('none');
+            }
+            
             if (selectCadastrar.value == "1") {
                 document.querySelector('.row-responsavel').classList.remove('none');
             } else {
                 document.querySelector('.row-responsavel').classList.add('none');
             }
         }
+        
+
+        
     </script>
     <%}
    else{
